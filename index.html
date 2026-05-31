@@ -3571,6 +3571,12 @@
 
         .channel-icon { font-size: 20px; }
 
+        .star-pick { transition: transform .15s; user-select: none; }
+
+        .star-pick:hover { transform: scale(1.2); }
+
+        .star-pick.lit { color: #F5C518; }
+
     </style>
 
 </head>
@@ -4451,7 +4457,7 @@
 
         <p>Your feedback helps us improve and helps other customers find us. Leave us a review — it only takes 30 seconds.</p>
 
-        <a href="https://g.page/r/" target="_blank" class="btn-review">⭐ Leave a Review on Google</a>
+        <a href="#" onclick="openReviewModal(); return false;" class="btn-review">⭐ Leave a Review</a>
 
     </div>
 
@@ -4714,6 +4720,84 @@
     </div>
 
     </section>
+
+    <!-- ================= REVIEW MODAL ================= -->
+
+    <div class="modal-overlay" id="reviewModal" onclick="if(event.target===this) closeReviewModal()">
+
+        <div class="modal" style="max-width:500px;">
+
+            <button class="modal-close" onclick="closeReviewModal()">✕</button>
+
+            <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;margin-bottom:6px;">⭐ Leave a Review</h3>
+
+            <p style="color:#666;font-size:13px;margin-bottom:22px;">We'd love to hear about your experience with Ignite E-Clean!</p>
+
+            <!-- Star rating picker -->
+
+            <div style="margin-bottom:18px;">
+
+                <label style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:#333;display:block;margin-bottom:10px;">Your Rating</label>
+
+                <div id="starPicker" style="display:flex;gap:6px;font-size:36px;cursor:pointer;">
+
+                    <span class="star-pick" data-val="1" onclick="setRating(1)">☆</span>
+
+                    <span class="star-pick" data-val="2" onclick="setRating(2)">☆</span>
+
+                    <span class="star-pick" data-val="3" onclick="setRating(3)">☆</span>
+
+                    <span class="star-pick" data-val="4" onclick="setRating(4)">☆</span>
+
+                    <span class="star-pick" data-val="5" onclick="setRating(5)">☆</span>
+
+                </div>
+
+                <input type="hidden" id="reviewRating" value="0">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Your Name</label>
+
+                <input type="text" id="reviewName" placeholder="e.g. Maria Santos">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Your Review</label>
+
+                <textarea id="reviewText" rows="4" placeholder="Tell us about your experience..." style="resize:vertical;"></textarea>
+
+            </div>
+
+            <button class="btn-submit" onclick="submitReview()" style="margin-top:8px;">Submit Review</button>
+
+        </div>
+
+    </div>
+
+    <!-- ================= THANK YOU MODAL ================= -->
+
+    <div class="modal-overlay" id="thankyouModal" onclick="if(event.target===this) closeThankyou()">
+
+        <div class="modal" style="max-width:420px;text-align:center;padding:48px 36px;">
+
+            <div style="font-size:64px;margin-bottom:16px;">🎉</div>
+
+            <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:#111827;margin-bottom:10px;">Thank You for Your Review!</h3>
+
+            <p style="color:#555;font-size:14px;line-height:1.7;margin-bottom:28px;">Your feedback means the world to us. It helps us improve and helps other customers find reliable cleaning services. We truly appreciate you taking the time!</p>
+
+            <div style="font-size:32px;letter-spacing:6px;margin-bottom:28px;">⭐⭐⭐⭐⭐</div>
+
+            <button class="btn-submit" onclick="closeThankyou()">Close</button>
+
+        </div>
+
+    </div>
 
     <!-- ================= BOOKING MODAL ================= -->
 
@@ -6374,6 +6458,80 @@
                 breakdown.innerHTML = lines.length > 0 ? lines.join('<br>') : '';
 
             }
+
+        }
+
+        // ── REVIEW MODAL ──
+
+        function openReviewModal() {
+
+            document.getElementById('reviewModal').classList.add('open');
+
+            document.body.style.overflow = 'hidden';
+
+        }
+
+        function closeReviewModal() {
+
+            document.getElementById('reviewModal').classList.remove('open');
+
+            document.body.style.overflow = '';
+
+            // reset form
+
+            document.getElementById('reviewName').value = '';
+
+            document.getElementById('reviewText').value = '';
+
+            document.getElementById('reviewRating').value = '0';
+
+            setRating(0);
+
+        }
+
+        function setRating(val) {
+
+            document.getElementById('reviewRating').value = val;
+
+            document.querySelectorAll('.star-pick').forEach(function(s) {
+
+                const v = parseInt(s.getAttribute('data-val'));
+
+                s.textContent = v <= val ? '★' : '☆';
+
+                v <= val ? s.classList.add('lit') : s.classList.remove('lit');
+
+            });
+
+        }
+
+        function submitReview() {
+
+            const name = document.getElementById('reviewName').value.trim();
+
+            const text = document.getElementById('reviewText').value.trim();
+
+            const rating = parseInt(document.getElementById('reviewRating').value);
+
+            if (!name) { alert('Please enter your name.'); return; }
+
+            if (rating === 0) { alert('Please select a star rating.'); return; }
+
+            if (!text) { alert('Please write your review.'); return; }
+
+            closeReviewModal();
+
+            document.getElementById('thankyouModal').classList.add('open');
+
+            document.body.style.overflow = 'hidden';
+
+        }
+
+        function closeThankyou() {
+
+            document.getElementById('thankyouModal').classList.remove('open');
+
+            document.body.style.overflow = '';
 
         }
 
