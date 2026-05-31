@@ -3483,136 +3483,6 @@
 
             .btn-review:hover { background: #333; transform: translateY(-2px); }
 
-        /* ── SUBSCRIPTION ── */
-
-        .subscription-section {
-
-            padding: 72px 20px;
-
-            background: var(--light-gray);
-
-        }
-
-        .subscription-inner { max-width: 960px; margin: 0 auto; }
-
-        .sub-grid {
-
-            display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
-            gap: 24px;
-
-            margin-top: 36px;
-
-        }
-
-        .sub-card {
-
-            background: var(--white);
-
-            border-radius: 16px;
-
-            padding: 28px 24px;
-
-            border: 2px solid var(--border);
-
-            transition: .3s;
-
-            box-shadow: 0 4px 18px rgba(0,0,0,.06);
-
-        }
-
-            .sub-card:hover { border-color: var(--yellow); transform: translateY(-5px); }
-
-        .sub-card.featured-sub {
-
-            background: linear-gradient(135deg, #f5c518, #ffd84d);
-
-            border: none;
-
-        }
-
-        .sub-icon { font-size: 32px; margin-bottom: 12px; }
-
-        .sub-card h4 {
-
-            font-family: 'Montserrat', sans-serif;
-
-            font-weight: 900;
-
-            font-size: 17px;
-
-            color: #111827;
-
-            margin-bottom: 4px;
-
-        }
-
-        .sub-card .sub-freq {
-
-            font-size: 12px;
-
-            color: #888;
-
-            margin-bottom: 14px;
-
-        }
-
-        .sub-card.featured-sub .sub-freq { color: #5c4700; }
-
-        .sub-perks {
-
-            list-style: none;
-
-            font-size: 13px;
-
-            color: #444;
-
-        }
-
-            .sub-perks li { padding: 5px 0; display: flex; gap: 8px; align-items: flex-start; }
-
-            .sub-perks li::before { content: '✔'; color: #e0b000; font-weight: 700; flex-shrink: 0; }
-
-        .sub-card.featured-sub .sub-perks li { color: #111827; }
-
-        .sub-btn {
-
-            display: block;
-
-            margin-top: 20px;
-
-            width: 100%;
-
-            padding: 12px;
-
-            border: none;
-
-            border-radius: 10px;
-
-            background: #111827;
-
-            color: white;
-
-            font-family: 'Montserrat', sans-serif;
-
-            font-weight: 700;
-
-            font-size: 14px;
-
-            cursor: pointer;
-
-            transition: .3s;
-
-            text-align: center;
-
-        }
-
-            .sub-btn:hover { background: #333; }
-
-        .sub-card.featured-sub .sub-btn { background: #111827; }
-
         /* ── CONTACT CHANNELS ── */
 
         .contact-channels {
@@ -3805,9 +3675,9 @@
 
                 <li><a href="#why-us">Why Us</a></li>
 
-                <li><a href="#about">About Us</a></li>
-
                 <li><a href="#blog">Blog</a></li>
+
+                <li><a href="#about">About Us</a></li>
 
                 <li><a href="#contact">Contact</a></li>
 
@@ -4377,106 +4247,6 @@
 
     </div>
 
-    <!-- SUBSCRIPTION PLANS -->
-
-    <section class="subscription-section" id="subscriptions">
-
-        <div class="subscription-inner">
-
-            <div style="text-align:center;">
-
-                <div class="section-tag">Cleaning Plans</div>
-
-                <div class="section-title">Subscribe & Save More</div>
-
-                <p style="color:var(--gray);margin-top:10px;font-size:15px;max-width:540px;margin-left:auto;margin-right:auto;">Book regularly and unlock bigger savings. Our weekly and monthly plans keep your home consistently clean at a lower cost.</p>
-
-            </div>
-
-            <div class="sub-grid">
-
-                <div class="sub-card">
-
-                    <div class="sub-icon">📅</div>
-
-                    <h4>Pay Per Clean</h4>
-
-                    <p class="sub-freq">One-time booking · No commitment</p>
-
-                    <ul class="sub-perks">
-
-                        <li>Book any time you need</li>
-
-                        <li>Full area selection</li>
-
-                        <li>Live price calculator</li>
-
-                        <li>All payment methods accepted</li>
-
-                    </ul>
-
-                    <button class="sub-btn" onclick="openModalWithPackagePicker()">Book Now →</button>
-
-                </div>
-
-                <div class="sub-card featured-sub">
-
-                    <div class="sub-icon">⭐</div>
-
-                    <h4>Weekly Plan</h4>
-
-                    <p class="sub-freq">Every week · Save up to 15%</p>
-
-                    <ul class="sub-perks">
-
-                        <li>Consistent weekly cleaning schedule</li>
-
-                        <li>Priority booking slots</li>
-
-                        <li>Same trusted cleaning team</li>
-
-                        <li>15% discount on every session</li>
-
-                        <li>Free schedule adjustment</li>
-
-                    </ul>
-
-                    <button class="sub-btn" onclick="openModalWithPackagePicker()">Subscribe Weekly →</button>
-
-                </div>
-
-                <div class="sub-card">
-
-                    <div class="sub-icon">🗓️</div>
-
-                    <h4>Monthly Plan</h4>
-
-                    <p class="sub-freq">Twice a month · Save up to 20%</p>
-
-                    <ul class="sub-perks">
-
-                        <li>2 cleaning sessions per month</li>
-
-                        <li>20% discount on all sessions</li>
-
-                        <li>Priority customer support</li>
-
-                        <li>Free rescheduling up to 48hrs</li>
-
-                        <li>Loyalty rewards accumulation</li>
-
-                    </ul>
-
-                    <button class="sub-btn" onclick="openModalWithPackagePicker()">Subscribe Monthly →</button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
     <!-- BLOG -->
 
     <section class="blog-section" id="blog">
@@ -4889,11 +4659,11 @@
 
                     <li><a href="#why-us">Why Us</a></li>
 
-                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#blog">Blog</a></li>
 
                     <li><a href="#contact">Contact</a></li>
 
-                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#about">About Us</a></li>
 
                     <li><a href="#" onclick="openPrivacy(); return false;">Privacy Policy</a></li>
 
@@ -4933,19 +4703,9 @@
 
         </div>
 
-        <div class="footer-bottom">
+        <div class="footer-bottom" style="justify-content:center;text-align:center;">
 
             <span>© Copyright 2026. All rights reserved. Ignite E-clean Cleaning Co.</span>
-
-            <div class="social-links" style="gap:8px;">
-
-                <a href="" target="_blank" style="font-size:18px;">📘</a>
-
-                <a href="" target="_blank" style="font-size:18px;">📷</a>
-
-                <a href="" target="_blank" style="font-size:18px;">🎵</a>
-
-            </div>
 
         </div>
 
@@ -5963,7 +5723,9 @@
 
     <button class="scroll-top"
 
-            id="scrollTop">
+            id="scrollTop"
+
+            onclick="window.scrollTo({top:0,behavior:'smooth'})">
 
         ↑
 
