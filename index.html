@@ -4163,7 +4163,7 @@
 
             <!-- ADD THIS HERE -->
 
-            <div class="form-row" id="propertyRoomsRow">
+            <div class="form-row" id="propertyRoomsRow" style="grid-template-columns:1fr 1fr 1fr;">
 
                 <div class="form-group" id="propertyTypeGroup">
 
@@ -4185,7 +4185,35 @@
 
                 </div>
 
+                <div class="form-group" id="houseSizeGroup">
+
+                    <label>House Size (sqm)</label>
+
+                    <select id="houseSize" onchange="updatePriceEstimate()">
+
+                        <option value="200">200 sqm (Standard)</option>
+
+                        <option value="250">250 sqm (+₱500)</option>
+
+                        <option value="300">300 sqm (+₱1,000)</option>
+
+                        <option value="350">350 sqm (+₱1,500)</option>
+
+                        <option value="400">400 sqm (+₱2,000)</option>
+
+                        <option value="450">450 sqm (+₱2,500)</option>
+
+                        <option value="500">500 sqm (+₱3,000)</option>
+
+                    </select>
+
+                    <small style="color:#888;font-size:11px;margin-top:4px;display:block;">Standard: 200 sqm. +₱500 per extra 50 sqm.</small>
+
+                </div>
+
                 <div class="form-group" id="roomsGroup">
+
+                    <label>Number of Rooms</label>
 
                     <select id="rooms" onchange="updatePriceEstimate()">
 
@@ -5089,6 +5117,10 @@
 
             document.getElementById('rooms').value = '0';
 
+            const hs = document.getElementById('houseSize');
+
+            if (hs) hs.value = '200';
+
             updatePriceEstimate();
 
         }
@@ -5473,7 +5505,7 @@
 
                     const areaName = cb.parentElement.textContent.trim();
 
-                    lines.push(areaName + ' — ₱' + price.toLocaleString('en-PH'));
+                    lines.push(areaName + ' \u2014 \u20B1' + price.toLocaleString('en-PH'));
 
                     const isNoRoom = noRoomAreas.some(function(n) { return areaName === n; });
 
@@ -5511,7 +5543,29 @@
 
             }
 
-            const formatted = '₱' + total.toLocaleString('en-PH');
+            // House size surcharge: +₱500 per 50 sqm above 200 sqm standard
+
+            const houseSizeSelect = document.getElementById('houseSize');
+
+            if (houseSizeSelect) {
+
+                const sqm = parseInt(houseSizeSelect.value, 10) || 200;
+
+                const extraSqm = Math.max(0, sqm - 200);
+
+                const sqmCost = (extraSqm / 50) * 500;
+
+                if (sqmCost > 0) {
+
+                    total += sqmCost;
+
+                    lines.push(sqm + ' sqm (' + extraSqm + ' extra sqm) \u2014 \u20B1' + sqmCost.toLocaleString('en-PH'));
+
+                }
+
+            }
+
+            const formatted = '\u20B1' + total.toLocaleString('en-PH');
 
             document.getElementById('estimatedTotal').textContent = formatted;
 
