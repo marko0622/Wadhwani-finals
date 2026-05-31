@@ -3731,6 +3731,68 @@
 
         }
 
+        /* ── TERMS MODAL SPACING ── */
+
+        #termsModal .modal h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 16px;
+
+        }
+
+        #termsModal .modal p,
+
+        #termsModal .modal li {
+
+            line-height: 1.85;
+
+            color: #444;
+
+            font-size: 14px;
+
+            margin-bottom: 10px;
+
+        }
+
+        #termsModal .modal h4 {
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-weight: 800;
+
+            font-size: 14px;
+
+            color: #111827;
+
+            margin-top: 24px;
+
+            margin-bottom: 8px;
+
+        }
+
+        #termsModal .modal hr {
+
+            border: none;
+
+            border-top: 1px solid #eee;
+
+            margin: 20px 0;
+
+        }
+
+        #termsModal .modal ul {
+
+            padding-left: 18px;
+
+        }
+
+        #termsModal .modal ul li {
+
+            margin-bottom: 6px;
+
+        }
+
         .star-pick:hover { transform: scale(1.2); }
 
         .star-pick.lit { color: #F5C518; }
@@ -5199,17 +5261,19 @@
 
                     <select id="rooms" onchange="updatePriceEstimate()">
 
-                        <option value="0">Select</option>
+                        <option value="0">Select Rooms</option>
 
-                        <option value="1">1 Room</option>
+                        <option value="1">1 Room (+₱1,200)</option>
 
-                        <option value="2">2 Rooms</option>
+                        <option value="2">2 Rooms (+₱2,400)</option>
 
-                        <option value="3">3 Rooms</option>
+                        <option value="3">3 Rooms (+₱3,600)</option>
 
-                        <option value="4">4 Rooms</option>
+                        <option value="4">4 Rooms (+₱4,800)</option>
 
-                        <option value="5">5+ Rooms</option>
+                        <option value="5">5 Rooms (+₱6,000)</option>
+
+                        <option value="6">6+ Rooms (+₱7,200)</option>
 
                     </select>
 
@@ -5344,6 +5408,10 @@
                 </label>
 
             </div>
+
+            <p style="font-size:12.5px;color:#888;text-align:center;margin-bottom:10px;line-height:1.6;">
+                📩 After submitting, our team will review your booking and <strong style="color:#333;">contact you shortly</strong> to confirm your schedule and provide the final quotation.
+            </p>
 
             <button class="btn-submit"
 
@@ -6439,13 +6507,7 @@
 
                 ).value;
 
-            let address =
-
-                document.querySelector(
-
-                    'textarea'
-
-                ).value.trim();
+            let address = document.getElementById('address').value.trim();
 
             let privacy =
 
@@ -6515,11 +6577,7 @@
 
             closeModal();
 
-            document.querySelector(
-
-                '.modal'
-
-            ).querySelectorAll(
+            document.getElementById('bookingForm').querySelectorAll(
 
                 'input, textarea, select'
 
