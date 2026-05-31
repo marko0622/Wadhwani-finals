@@ -5019,7 +5019,31 @@
 
     </div>
 
-    <!-- ================= BOOKING MODAL ================= -->
+    <!-- ================= BOOKING THANK YOU MODAL ================= -->
+
+    <div class="modal-overlay" id="bookingThankyouModal" onclick="if(event.target===this) closeBookingThankyou()">
+
+        <div class="modal" style="max-width:440px;text-align:center;padding:48px 36px;">
+
+            <div style="font-size:64px;margin-bottom:16px;">✅</div>
+
+            <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:#111827;margin-bottom:10px;">Booking Received!</h3>
+
+            <p style="color:#555;font-size:14px;line-height:1.75;margin-bottom:12px;">Thank you for choosing <strong>Ignite E-Clean Co.</strong>! Your booking has been submitted successfully.</p>
+
+            <p style="color:#555;font-size:14px;line-height:1.75;margin-bottom:28px;">📩 Our team will <strong>review your request and contact you shortly</strong> to confirm your schedule and provide the final quotation.</p>
+
+            <div style="background:#fffbea;border:2px solid #F5C518;border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:13px;color:#5c4700;">
+
+                🔥 We look forward to making your space spotless!
+
+            </div>
+
+            <button class="btn-submit" onclick="closeBookingThankyou()">Got It!</button>
+
+        </div>
+
+    </div>
 
     <div class="modal-overlay"
 
@@ -5408,10 +5432,6 @@
                 </label>
 
             </div>
-
-            <p style="font-size:12.5px;color:#888;text-align:center;margin-bottom:10px;line-height:1.6;">
-                📩 After submitting, our team will review your booking and <strong style="color:#333;">contact you shortly</strong> to confirm your schedule and provide the final quotation.
-            </p>
 
             <button class="btn-submit"
 
@@ -6569,13 +6589,11 @@
 
             }
 
-            alert(
-
-                "✅ Booking completed successfully!\n\nThank you for choosing Ignite E-clean Co.\nWe will contact you shortly."
-
-            );
-
             closeModal();
+
+            document.getElementById('bookingThankyouModal').classList.add('open');
+
+            document.body.style.overflow = 'hidden';
 
             document.getElementById('bookingForm').querySelectorAll(
 
@@ -6818,6 +6836,14 @@
             document.getElementById('thankyouModal').classList.add('open');
 
             document.body.style.overflow = 'hidden';
+
+        }
+
+        function closeBookingThankyou() {
+
+            document.getElementById('bookingThankyouModal').classList.remove('open');
+
+            document.body.style.overflow = '';
 
         }
 
